@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit User</title>
+
+    <style>
+           body {
+            background-color: antiquewhite;
+            color: firebrick;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0px auto;
+        }
+
+        .header{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .header a {
+            padding-left: 50px;
+        }
+
+        .output {
+            border: 5px ridge firebrick;
+            padding-left: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row header">
+            <div class="col"><h1>User</h1></div>
+            <a href="/">Home</a>
+        </div>
+
+        <div class="row">
+            <div class="col output">
+               {% for user_info in all_users %}
+               <p>Id: {{ user_info.id }}</p>
+               <p>Full Name: {{ user_info.first_name}} {{user_info.last_name }}</p>
+               <p>Email: {{ user_info.email }}</p>
+               <p>Created On: {{ user_info.created_at }}</p>
+               <p>Last Updated On: {{ user_info.updated_at }}</p>
+               <p><a href="/edit_user/{{user_info.id}}">Edit</a> | <a href="/delete_user/{{user_info.id}}">Delete</a></p>
+               {% endfor %}
+           
+            </div>
+        </div>
+    </div>
+</body>
+</html>

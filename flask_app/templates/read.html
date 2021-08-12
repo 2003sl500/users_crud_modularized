@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users Data</title>
+
+    <style>
+        body {
+            background-color: antiquewhite;
+            color: firebrick;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0px auto;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 30px;
+            margin-bottom: 50px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>All Users</h1>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Full Name</h>
+                <th>Email</th>
+                <th>Created At</th>
+                <th>Actions</th>
+            </tr>
+            
+            {% for user_info in all_users %}
+            <tr style="border: 1px solid black;">
+                <td style="border: 1px solid black; text-align: center;">{{ user_info.id }}</td>
+                <td style="border: 1px solid black; text-align: center;">{{ user_info.first_name + " " + user_info.last_name }}</td>
+                <td style="border: 1px solid black; text-align: center;">{{ user_info.email }}</td>
+                <td style="border: 1px solid black; text-align: center;">{{ user_info.created_at }}</td>
+                <td style="border: 1px solid black; text-align: center;">
+                    <a href="/show_user/{{ user_info.id }}">Show</a> | <a href="/edit_user/{{ user_info.id }}">Edit</a> | <a href="/delete_user/{{ user_info.id }}">Delete</a></td>
+                   
+            </tr>        
+            {% endfor %}
+        </table>
+    
+        <a href="/users">Add a New User</a>
+    </div>
+</body>
+</html>
